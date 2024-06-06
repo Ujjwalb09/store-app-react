@@ -24,7 +24,7 @@ function Home() {
                   `url(${product.image})`,
               }}
             ></div>
-            <h1 className="hover:text-blue-400">{product.title}</h1>
+            <h1 className="hover:text-red-400">{product.title}</h1>
           </Link>
         ))}
 
