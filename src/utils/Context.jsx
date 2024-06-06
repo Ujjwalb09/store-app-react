@@ -4,7 +4,7 @@ import React, { createContext, useEffect, useState } from 'react'
 export const ProductContext = createContext()
 
 function Context(props) {
-    const [products, setproducts] = useState([]);
+    const [products, setproducts] = useState(null);
 
     const getProducts = async () => {
         try {

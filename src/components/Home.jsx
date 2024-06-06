@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
+import Loading from "./Loading";
 
 function Home() {
   const [products, setProduct] = useContext(ProductContext);
@@ -9,6 +10,7 @@ function Home() {
 
   return (
     <>
+     {!products ? <Loading/> : <> 
       <Nav />
       <div className="w-[85%] p-10 pt-[5%] flex flex-wrap gap-6 overflow-x-hidden overflow-y-auto">
 
@@ -29,6 +31,7 @@ function Home() {
         ))}
 
       </div>
+     </>}
     </>
   );
 }
