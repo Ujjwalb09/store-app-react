@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
+import Loading from "./Loading";
 
 function Details() {
   const { id } = useParams();
 
   const [products] = useContext(ProductContext);
 
-  const product = products.find((product) => product.id == id);
+  console.log(products);
 
-  return (
+  const product = products ? products.find((product) => product.id == id) : null;
+
+  return !product ? <Loading/> : (
     <div className="w-[70%] flex h-full justify-between items-center m-auto p-[10%]">
       <img
         className="object-contain h-[80%]  w-[40%]"

@@ -6,6 +6,7 @@ import Loading from "./Loading";
 
 function Home() {
   const [products, setProduct] = useContext(ProductContext);
+  console.log(products);
 
   return (
     <>
