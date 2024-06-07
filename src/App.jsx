@@ -8,6 +8,7 @@ function App() {
     <div className="h-screen w-screen flex">
     <Routes>
       <Route path="/" element={<Home/>}/>
+      <Route path="/home/:category" element={<Home/>}/>
       <Route path="/details/:id" element={<Details/>}/>
     </Routes>
     </div>

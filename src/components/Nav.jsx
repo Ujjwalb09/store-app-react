@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
+import { Link } from "react-router-dom";
 
 function Nav() {
   const [categories, setcategories] = useState([]);
@@ -33,12 +34,17 @@ function Nav() {
       <h1 className="text-2xl mb-3 w-[80%]">Category Filter</h1>
       <ul className="w-[80%]">
         {categories.map((category, index) => (
-          <li key={index} className="mb-3 flex items-center">
+          <Link key={index} to={`/home/${category}`}>
+          <li className="mb-3 flex items-center">
             <span className="bg-blue-200 w-[15px] h-[15px] mr-2 rounded-full"></span>
             {category}
           </li>
+      
+          </Link>
         ))}
       </ul>
+
+      <Link to="/" className="bg-blue-500 rounded-md px-3 py-2 text-white mt-5">Remove Filter</Link>
     </nav>
   );
 }
