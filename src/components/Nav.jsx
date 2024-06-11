@@ -20,6 +20,10 @@ function Nav() {
     setcategories(uniqueCategories);
   }, [products]);
 
+  const color = () => {
+    return `rgba(${(Math.random()*255).toFixed()}, ${(Math.random()*255).toFixed()}, ${(Math.random()*255).toFixed()}, 0.4)`;
+  }
+
   return (
     <nav className="w-[15%] h-full bg-zinc-100 flex flex-col items-center p-5">
       <a
@@ -45,7 +49,9 @@ function Nav() {
             key={index}
             to={`/home/${category}`}
           >
-            <span className="bg-blue-200 w-[15px] h-[15px] mr-2 rounded-full"></span>
+            <span style={{
+              background: color()
+            }} className="} w-[15px] h-[15px] mr-2 rounded-full"></span>
             {category}
           </NavLink>
         ))}
