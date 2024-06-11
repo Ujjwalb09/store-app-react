@@ -1,26 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Nav() {
   const [categories, setcategories] = useState([]);
 
   const [products] = useContext(ProductContext);
 
- useEffect(()=>{
-
-  const uniqueCategories = products
+  useEffect(() => {
+    const uniqueCategories = products
       ? products.reduce((acc, product) => {
-          if(!acc.includes(product.category)){
-            acc.push(product.category)
+          if (!acc.includes(product.category)) {
+            acc.push(product.category);
           }
           return acc;
-        }, []) : []
+        }, [])
+      : [];
 
     setcategories(uniqueCategories);
-
- }, [products])
-
+  }, [products]);
 
   return (
     <nav className="w-[15%] h-full bg-zinc-100 flex flex-col items-center p-5">
@@ -34,17 +32,28 @@ function Nav() {
       <h1 className="text-2xl mb-3 w-[80%]">Category Filter</h1>
       <ul className="w-[80%]">
         {categories.map((category, index) => (
-          <Link key={index} to={`/home/${category}`}>
-          <li className="mb-3 flex items-center">
+          <NavLink
+            className={(e) => {
+              return [
+                e.isActive ? "text-red-400 font-bold" : "",
+                "mb-3",
+                "flex",
+                "items-center",
+                "hover:text-red-400",
+              ].join(" ");
+            }}
+            key={index}
+            to={`/home/${category}`}
+          >
             <span className="bg-blue-200 w-[15px] h-[15px] mr-2 rounded-full"></span>
             {category}
-          </li>
-      
-          </Link>
+          </NavLink>
         ))}
       </ul>
 
-      <Link to="/" className="bg-blue-500 rounded-md px-3 py-2 text-white mt-5">Remove Filter</Link>
+      <Link to="/" className="bg-blue-500 rounded-md px-3 py-2 text-white mt-5">
+        Remove Filter
+      </Link>
     </nav>
   );
 }
