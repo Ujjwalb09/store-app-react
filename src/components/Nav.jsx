@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
 import { Link, NavLink } from "react-router-dom";
 
-function Nav() {
+function Nav({ category }) {
   const [categories, setcategories] = useState([]);
 
   const [products] = useContext(ProductContext);
@@ -21,8 +21,10 @@ function Nav() {
   }, [products]);
 
   const color = () => {
-    return `rgba(${(Math.random()*255).toFixed()}, ${(Math.random()*255).toFixed()}, ${(Math.random()*255).toFixed()}, 0.4)`;
-  }
+    return `rgba(${(Math.random() * 255).toFixed()}, ${(
+      Math.random() * 255
+    ).toFixed()}, ${(Math.random() * 255).toFixed()}, 0.4)`;
+  };
 
   return (
     <nav className="w-[15%] h-full bg-zinc-100 flex flex-col items-center p-5">
@@ -49,17 +51,25 @@ function Nav() {
             key={index}
             to={`/home/${category}`}
           >
-            <span style={{
-              background: color()
-            }} className="} w-[15px] h-[15px] mr-2 rounded-full"></span>
+            <span
+              style={{
+                background: color(),
+              }}
+              className="} w-[15px] h-[15px] mr-2 rounded-full"
+            ></span>
             {category}
           </NavLink>
         ))}
       </ul>
 
-      <Link to="/" className="bg-blue-500 rounded-md px-3 py-2 text-white mt-5">
-        Remove Filter
-      </Link>
+      {category && (
+        <Link
+          to="/"
+          className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mt-5"
+        >
+          Remove Filter
+        </Link>
+      )}
     </nav>
   );
 }

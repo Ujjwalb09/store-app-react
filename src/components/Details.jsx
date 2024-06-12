@@ -14,6 +14,7 @@ function Details() {
 
   return !product ? <Loading/> : (
     <div className="w-[70%] flex h-full justify-between items-center m-auto p-[10%]">
+      
       <img
         className="object-contain h-[80%]  w-[40%]"
         src={`${product.image}`}

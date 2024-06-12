@@ -15,7 +15,7 @@ function Home() {
         <Loading />
       ) : (
         <>
-          <Nav />
+          <Nav category={category} />
           <div className="w-[85%] p-10 pt-[5%] flex flex-wrap gap-6 overflow-x-hidden overflow-y-auto">
             {!category ? products.map((product) => (
               <Link
