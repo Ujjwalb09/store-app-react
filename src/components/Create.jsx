@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../utils/Context";
+import { nanoid } from "nanoid";
 
 const Create = () => {
+  const [products, setProducts] = useContext(ProductContext);
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
@@ -10,13 +14,27 @@ const Create = () => {
 
   const addProduct = (e) => {
     e.preventDefault();
+
+    if (
+      title.trim().length < 5 ||
+      image.trim().length < 5 ||
+      category.trim().length < 5 ||
+      price.trim().length < 1 ||
+      description.trim().length < 5
+    ) {
+      alert("Cannot Submit an empty field");
+      return;
+    }
     const product = {
+      id: nanoid(),
       title,
       image,
       category,
       price,
       description,
     };
+
+    setProducts([...products, product]);
   };
 
   return (
