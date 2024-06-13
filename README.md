@@ -1,8 +1,19 @@
-# React + Vite
+# Store App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple store application built in React JS and styled with Tailwind CSS. The App used fake store API to fetch the products. It contains following features:
 
-Currently, two official plugins are available:
+- View products category-wise by applying category filters.
+- View detailed information about each product.
+- Add new products.
+- Delete existing products.
+- Edit product details.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tools & Techologies Used
+
+- **React**: A JavaScript library for building user interfaces.
+- **States and Components**: Implemented using React's state management and component-based architecture.
+- **Routing**: Managed with `react-router-dom` for navigation and routing.
+- **Axios**: Used for making API calls to the Fake Store API.
+- **Tailwind CSS**: A utility-first CSS framework for styling the application.
+
+## Sample
