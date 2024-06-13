@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
 import Loading from "./Loading";
+import { toast } from "react-toastify";
 
 function Details() {
   const { id } = useParams();
@@ -24,6 +25,7 @@ function Details() {
 
     localStorage.setItem("products", JSON.stringify(DeletedProductData));
 
+    toast.success("Product Deleted");
     navigate(-1);
   };
 
