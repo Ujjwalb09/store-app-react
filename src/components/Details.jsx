@@ -7,17 +7,31 @@ function Details() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [products] = useContext(ProductContext);
+  const [products, setProducts] = useContext(ProductContext);
 
   const product = products
     ? products.find((product) => product.id == id)
     : null;
 
+  const deleteProduct = () => {
+    const productsDataJSON = localStorage.getItem("products");
+
+    const productsData = JSON.parse(productsDataJSON);
+
+    const DeletedProductData = productsData.filter((p) => p.id != product.id);
+
+    setProducts(DeletedProductData);
+
+    localStorage.setItem("products", JSON.stringify(DeletedProductData));
+
+    navigate(-1);
+  };
+
   return !product ? (
     <Loading />
   ) : (
     <div className="w-[70%] flex h-full justify-between items-center m-auto p-[10%] relative">
-      <Link
+      <button
         onClick={() => navigate(-1)}
         className="absolute left-1 top-20 w-full flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-700 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
       >
@@ -36,7 +50,7 @@ function Details() {
           />
         </svg>
         <span>Go back</span>
-      </Link>
+      </button>
 
       <img
         className="object-contain h-[80%]  w-[40%]"
@@ -52,9 +66,12 @@ function Details() {
         <Link className="mr-5 py-2 border rounded border-blue-200 px-5 text-blue-500">
           Edit
         </Link>
-        <Link className="py-2 border rounded border-red-200 px-5 text-red-500">
+        <button
+          onClick={deleteProduct}
+          className="py-2 border rounded border-red-200 px-5 text-red-500"
+        >
           Delete
-        </Link>
+        </button>
       </div>
     </div>
   );
