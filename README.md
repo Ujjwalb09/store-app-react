@@ -17,3 +17,15 @@ A simple store application built in React JS and styled with Tailwind CSS. The A
 - **Tailwind CSS**: A utility-first CSS framework for styling the application.
 
 ## Sample
+
+![Alt Text](https://imgur.com/A6nZdyW.jpg)
+
+![Alt Text](https://imgur.com/tZ0ukyi.jpg)
+
+![Alt Text](https://imgur.com/z8IsjwW.jpg)
+
+![Alt Text](https://imgur.com/PLzciME.jpg)
+
+![Alt Text](https://imgur.com/fYxxEff.jpg)
+
+![Alt Text](https://imgur.com/bU6LPzm.jpg)
