@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
 import Loading from "./Loading";
 
 function Details() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [products] = useContext(ProductContext);
 
@@ -17,7 +18,7 @@ function Details() {
   ) : (
     <div className="w-[70%] flex h-full justify-between items-center m-auto p-[10%] relative">
       <Link
-        to="/"
+        onClick={() => navigate(-1)}
         className="absolute left-1 top-20 w-full flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-700 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
       >
         <svg
@@ -36,7 +37,7 @@ function Details() {
         </svg>
         <span>Go back</span>
       </Link>
-      
+
       <img
         className="object-contain h-[80%]  w-[40%]"
         src={`${product.image}`}
