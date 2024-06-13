@@ -29,11 +29,12 @@ function Nav({ category }) {
   return (
     <nav className="w-[15%] h-full bg-zinc-100 flex flex-col items-center p-5">
       <Link
-        className="py-2 border rounded border-blue-200 px-5 text-blue-500"
         to="/create"
+        className="w-full flex items-center justify-center px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-700 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
       >
-        Add new product
+        <span>Add a new product</span>
       </Link>
+
       <hr className="w-[80%] m-5" />
       <h1 className="text-2xl mb-3 w-[80%]">Category Filter</h1>
       <ul className="w-[80%]">

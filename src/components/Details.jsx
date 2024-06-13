@@ -67,13 +67,13 @@ function Details() {
         <p className="mb-6">{product.description}</p>
         <Link
           to={`/edit/${id}`}
-          className="mr-5 py-2 border rounded border-blue-200 px-5 text-blue-500"
+          className="mr-5 w-full items-center justify-center px-5 py-3 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-700 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
         >
           Edit
         </Link>
         <button
           onClick={deleteProduct}
-          className="py-2 border rounded border-red-200 px-5 text-red-500"
+          className="py-3 w-full items-center justify-center px-5 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-700 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
         >
           Delete
         </button>
