@@ -12,6 +12,8 @@ A simple store application built in React JS and styled with Tailwind CSS. The A
 
 - **React**: A JavaScript library for building user interfaces.
 - **States and Components**: Implemented using React's state management and component-based architecture.
+- **Redux Toolkit**: Fully migrated from Context API to Redux Toolkit for state management.
+- **Local Storage**: Used for storing data locally.
 - **Routing**: Managed with `react-router-dom` for navigation and routing.
 - **Axios**: Used for making API calls to the Fake Store API.
 - **Tailwind CSS**: A utility-first CSS framework for styling the application.
