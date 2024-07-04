@@ -3,9 +3,14 @@ import Nav from "./Nav";
 import { Link, useParams } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
 import Loading from "./Loading";
+import { useSelector } from "react-redux";
 
 function Home() {
-  const [products] = useContext(ProductContext);
+  // const [products] = useContext(ProductContext);
+
+  const products = useSelector((state) => state.products.value);
+
+  // console.log(value);
 
   const { category } = useParams();
 

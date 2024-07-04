@@ -3,27 +3,23 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
 import Loading from "./Loading";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProduct } from "../store/reducers/ProductReducer";
 
 function Details() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [products, setProducts] = useContext(ProductContext);
+  const products = useSelector((state) => state.products.value);
+
+  const dispatch = useDispatch();
 
   const product = products
     ? products.find((product) => product.id == id)
     : null;
 
-  const deleteProduct = () => {
-    const productsDataJSON = localStorage.getItem("products");
-
-    const productsData = JSON.parse(productsDataJSON);
-
-    const DeletedProductData = productsData.filter((p) => p.id != product.id);
-
-    setProducts(DeletedProductData);
-
-    localStorage.setItem("products", JSON.stringify(DeletedProductData));
+  const deleteProd = () => {
+    dispatch(deleteProduct(product.id));
 
     toast.success("Product Deleted");
     navigate(-1);
@@ -72,7 +68,7 @@ function Details() {
           Edit
         </Link>
         <button
-          onClick={deleteProduct}
+          onClick={deleteProd}
           className="py-3 w-full items-center justify-center px-5 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto dark:hover:bg-gray-700 dark:bg-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:border-gray-700"
         >
           Delete

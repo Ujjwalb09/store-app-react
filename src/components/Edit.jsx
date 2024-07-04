@@ -2,9 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProduct } from "../store/reducers/ProductReducer";
 
 const Edit = () => {
-  const [products, setProducts] = useContext(ProductContext);
+  // const [products, setProducts] = useContext(ProductContext);
+
+  const products = useSelector((state) => state.products.value);
 
   const { id } = useParams();
 
@@ -13,6 +17,8 @@ const Edit = () => {
   const product = products && products.find((product) => product.id == id);
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const [title, setTitle] = useState(product.title);
   const [image, setImage] = useState(product.image);
@@ -43,12 +49,11 @@ const Edit = () => {
       description,
     };
 
-    const updatedProducts = products.map((p) =>
+    const updatedProductsArray = products.map((p) =>
       p.id === product.id ? updatedProduct : p
     );
 
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    dispatch(updateProduct(updatedProductsArray));
 
     toast.success("Product Edited");
     navigate(-1);

@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../utils/Context";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Nav({ category }) {
   const [categories, setcategories] = useState([]);
 
-  const [products] = useContext(ProductContext);
+  // const [products] = useContext(ProductContext);
+
+  const products = useSelector((state) => state.products.value);
 
   useEffect(() => {
     const uniqueCategories = products

@@ -3,9 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { ProductContext } from "../utils/Context";
 import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../store/reducers/ProductReducer";
 
 const Create = () => {
-  const [products, setProducts] = useContext(ProductContext);
+  // const [products, setProducts] = useContext(ProductContext);
+
+  const products = useSelector((state) => state.products.value);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -15,7 +21,7 @@ const Create = () => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
 
-  const addProduct = (e) => {
+  const addProd = (e) => {
     e.preventDefault();
 
     if (
@@ -37,8 +43,7 @@ const Create = () => {
       description,
     };
 
-    setProducts((prevState) => [...prevState, product]);
-    localStorage.setItem("products", JSON.stringify([...products, product]));
+    dispatch(addProduct(product));
 
     toast.success("Product Added Successfully");
     navigate("/");
@@ -47,7 +52,7 @@ const Create = () => {
   return (
     <form
       onSubmit={(e) => {
-        addProduct(e);
+        addProd(e);
       }}
       className="flex flex-col items-center p-[5%] w-screen h-screen"
     >
